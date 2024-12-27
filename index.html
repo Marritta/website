@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подорожі Україною</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">Travel Ukraine</div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#directions">Напрямки</a></li>
+                <li><a href="#gallery">Цікаві місця</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+        </nav>
+
+        <!-- Кнопка для відкриття бургер-меню -->
+        <div id="show-menu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+        <!-- Приховане меню -->
+        <div id="hidden-menu">
+            <h2>Меню</h2>
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Про компанію</a></li>
+                <li><a href="#">Послуги</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- Hero-блок -->
+    <section class="hero">
+        <h1>Відкрий Україну</h1>
+        <p>Подорожуй та знайомся з красою своєї країни</p>
+    </section>
+
+    <!-- Слайдер -->
+    <section class="slider-section">
+        <div class="slider">
+            <!-- Слайди -->
+            <div class="item">
+                <img src="ph1.jpg" alt="Карпати">
+            </div>
+            <div class="item">
+                <img src="ph2.jpg" alt="Львів">
+            </div>
+            <div class="item">
+                <img src="ph3.jpg" alt="Одеса">
+            </div>
+            <div class="item">
+                <img src="ph4.jpg" alt="Київ">
+            </div>
+            <div class="item">
+                <img src="ph5.jpg" alt="Чернівці">
+            </div>
+            <div class="item">
+                <img src="ph6.jpg" alt="Харків">
+            </div>
+
+            <!-- Кнопки -->
+            <a class="previous" onclick="previousSlide()">&#10094;</a>
+            <a class="next" onclick="nextSlide()">&#10095;</a>
+        </div>
+    </section>
+
+
+
+    <!-- Блок популярних напрямків -->
+    <section id="directions" class="directions">
+        <h2>Популярні напрямки</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Карпати</h3>
+                <p>Гори, природа, свіже повітря.</p>
+            </div>
+            <div class="card">
+                <h3>Львів</h3>
+                <p>Кава, історія, архітектура.</p>
+            </div>
+            <div class="card">
+                <h3>Одеса</h3>
+                <p>Море, пляжі, розваги.</p>
+            </div>
+            <div class="card">
+                <h3>Київ</h3>
+                <p>Столиця, пам'ятки, музеї.</p>
+            </div>
+        </div>
+
+        <!-- Калькулятор подорожі -->
+        <div id="calculator">
+            <h2>Калькулятор вартості подорожі</h2>
+            <form id="travelCalculator">
+                <label for="city">Місто:</label>
+                <select id="city" name="city">
+                    <option value="" disabled selected>Оберіть місто</option>
+                    <option value="karpaty">Карпати</option>
+                    <option value="lviv">Львів</option>
+                    <option value="odessa">Одеса</option>
+                    <option value="kyiv">Київ</option>
+                </select>
+
+                <label for="days">Кількість днів:</label>
+                <input type="number" id="days" name="days" min="1" placeholder="Введіть кількість днів">
+
+                <label for="transport">Транспорт:</label>
+                <select id="transport" name="transport">
+                    <option value="" disabled selected>Оберіть транспорт</option>
+                    <option value="car">Авто</option>
+                    <option value="train">Потяг</option>
+                    <option value="plane">Літак</option>
+                </select>
+
+                <label for="accommodation">Проживання:</label>
+                <select id="accommodation" name="accommodation">
+                    <option value="" disabled selected>Оберіть проживання</option>
+                    <option value="hotel">Готель</option>
+                    <option value="hostel">Хостел</option>
+                    <option value="apartment">Апартаменти</option>
+                </select>
+
+                <label for="food">Харчування:</label>
+                <select id="food" name="food">
+                    <option value="" disabled selected>Оберіть харчування</option>
+                    <option value="restaurant">Ресторан</option>
+                    <option value="cafe">Кафе</option>
+                    <option value="street">Вулична їжа</option>
+                </select>
+
+                <button type="button" onclick="calculateCost()">Розрахувати вартість</button>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section id="gallery" class="gallery">
+        <h2>Галерея</h2>
+        <div id="spinner" class="spinner">
+            <!-- Анімація спінера -->
+            <div class="lds-dual-ring"></div>
+        </div>
+        <div class="images hidden"> 
+            <a href="karpaty.jpg" title="Карпати"><img src="karpaty.jpg" alt="Карпати"></a> 
+            <a href="lviv.jpg" title="Львів"><img src="lviv.jpg" alt="Львів"></a> 
+            <a href="odessa.jpg" title="Одеса"><img src="odessa.jpg" alt="Одеса"></a> 
+            <a href="kyiv.jpg" title="Київ"><img src="kyiv.jpg" alt="Київ"></a> 
+        </div> 
+        <p><img id="largeImg" src="placeholder.jpg" alt=""class="hidden"></p> </section>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Travel Ukraine. Усі права захищено.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" class="social-icon" target="_blank">
+                <img src="facebook.svg" alt="Facebook">
+            </a>
+            <a href="https://twitter.com" class="social-icon" target="_blank">
+                <img src="twitter.svg" alt="Twitter">
+            </a>
+            <a href="https://instagram.com" class="social-icon" target="_blank">
+                <img src="instagram.svg" alt="Instagram">
+            </a>
+        </div>
+
+        <!-- Форма зворотнього зв'язку -->
+        <div id="feedback-form">
+            <h2>Зворотній зв'язок</h2>
+            <form id="contactForm">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" placeholder="Ваше ім'я">
+
+                <label for="surname">Прізвище:</label>
+                <input type="text" id="surname" name="surname" placeholder="Ваше прізвище">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Ваш email">
+
+                <label for="phone">Телефон:</label>
+                <input type="text" id="phone" name="phone" placeholder="Ваш телефон">
+
+                <label for="comment">Коментар:</label>
+                <textarea id="comment" name="comment" placeholder="Ваш коментар"></textarea>
+
+                <button type="submit">Надіслати</button>
+            </form>
+            <div id="error"></div>
+            <div id="success"></div>
+        </div>
+    </footer>
+
+    <!-- Кнопка-стрілка для прокрутки -->
+    <div id="scroll-top" class="scroll-top">
+        <img src="arrow-up.png" alt="Вгору"> <!-- Іконка стрілки вгору -->
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

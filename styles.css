@@ -1,0 +1,392 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Меню */
+#header {
+    background-color: #004d80; 
+    color: white;
+    padding: 10px; 
+    text-align: center;
+    position: relative; 
+    transition: background-color 0.3s ease; 
+    transition: padding 0.1s ease;
+}
+
+#header.fixed {
+    
+    padding: 1px; 
+    box-shadow: 0 10px 30px rgba(49, 14, 204, 0.911); 
+    background-color: #cfac0c;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    transition: padding 0.3s ease;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav li {
+    margin: 0 10px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    background: url('original.jpg') no-repeat center center / cover;
+    color: rgb(250, 249, 249);
+    text-align: center;
+    padding: 50px 20px;
+    height: 300px; 
+}
+
+.hero h1 {
+    margin-top: 130px; /* Відступ зверху для тексту */
+}
+
+.directions {
+    padding: 20px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.gallery {
+    background-color: #acaaaa;
+    padding: 20px;
+    text-align: center;
+}
+
+.images img {
+    width: 200px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* кнопка для прокрутки */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ефект при наведенні */
+.scroll-top:hover {
+    background-color: #004d4d;
+    transform: scale(1.2);
+    box-shadow: 0 6px 15px rgba(255, 254, 254, 0.555);
+}
+
+/* Анімація обертання */
+.scroll-top.rotate {
+    animation: rotateAnimation 0.6s ease-out forwards;
+}
+
+/* Ключові кадри для обертання */
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Бургер-меню */
+#show-menu {
+    display: none; 
+    position: fixed;
+    top: 1px;
+    right: 10px;
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.burger-line {
+    width: 30px;
+    height: 3px;
+    background-color: #008080;
+    margin: 5px 0; 
+    border-radius: 2px;
+}
+
+
+/* Приховане меню */
+#hidden-menu {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    right: -300px; 
+    height: 100vh;
+    background: #004d80;
+    z-index: 10;
+    text-align: start;
+    box-shadow: -4px 0 30px rgba(49, 14, 204, 0.911);
+    transition: right 0.3s ease; 
+}
+
+
+#hidden-menu a {
+    color: #eaeff3; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+#hidden-menu a:hover {
+    color: #cfac0c; 
+    text-decoration: underline; 
+}
+
+/* Прихований стан елементів */
+.hidden {
+    display: none !important;
+}
+
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #008080;
+    border-color: #008080 transparent #008080 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Плавна анімація для прокрутки */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Слайдер */
+.slider-section {
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: auto;
+}
+
+/* Слайди */
+.slider .item {
+    display: none;
+}
+
+.slider .item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Кнопки */
+.slider .previous, .slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    user-select: none;
+    z-index: 2;
+}
+
+.slider .previous {
+    left: 10px;
+}
+
+.slider .next {
+    right: 10px;
+}
+
+.slider .previous:hover, .slider .next:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Показуємо активний слайд */
+.slider .item.active {
+    display: block;
+    animation: fade 1.5s;
+}
+
+/* Анімація */
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Контейнер іконок */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Іконки */
+.social-icon img {
+  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Ефект при наведенні */
+.social-icon img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.459);
+}
+
+/* Додаємо стилі для калькулятора */
+#calculator {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 400px; 
+}
+
+#calculator form {
+    display: grid;
+    gap: 10px;
+}
+
+label, select, input, button {
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d4d;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(24, 22, 22, 0.904);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Стилі для форми зворотнього зв'язку */
+#feedback-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 5px;
+    text-align: left;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+#feedback-form label, #feedback-form input, #feedback-form textarea, #feedback-form button {
+    display: block;
+    width: 95%;
+    margin: 10px 0;
+}
+
+#feedback-form input, #feedback-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#feedback-form button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#feedback-form button:hover {
+    background-color: #004d4d;
+}
+
+#error {
+    color: red;
+    margin-top: 10px;
+}
